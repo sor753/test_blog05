@@ -1,5 +1,7 @@
 # Rails6 docker image
 
+---
+
 ## Usage
 
 `cd rails6`
@@ -22,6 +24,8 @@
 
 `ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '';`
 
+`mysql> select User,Host,plugin from mysql.user;`
+
 | User             | Host      | plugin                |
 | :--------------- | :-------- | :-------------------- |
 | root             | %         | mysql_native_password |
@@ -30,6 +34,12 @@
 | mysql.sys        | localhost | caching_sha2_password |
 | root             | localhost | caching_sha2_password |
 
-`mysql> select User,Host,plugin from mysql.user;`
-
 `% docker-compose exec web bundle exec rails db:prepare`
+
+---
+
+## Error
+
+### Webpacker::Manifest::MissingEntryError
+
+`docker-compose run --rm web yarn install`
