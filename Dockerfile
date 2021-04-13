@@ -1,5 +1,5 @@
 FROM ruby:2.7
-RUN apt-get update -qq && apt-get install -y nodejs yarnpkg
+RUN apt-get update -qq && apt-get install -y nodejs yarnpkg default-mysql-client
 RUN ln -s /usr/bin/yarnpkg /usr/bin/yarn
 RUN mkdir /app
 WORKDIR /app
