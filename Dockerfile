@@ -1,7 +1,7 @@
 FROM ruby:2.
 ENV LANG C.UTF-8
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y nodejs yarnpkg default-mysql-client && \
+    apt-get install --no-install-recommends -y build-essential nodejs yarnpkg default-mysql-client && \
     rm -rf /var/lib/apt/lists/*
 RUN ln -s /usr/bin/yarnpkg /usr/bin/yarn
 RUN mkdir /app
