@@ -1,0 +1,10 @@
+<% @title = "ブログ管理ページ" %>
+<h1><%= @title %></h1>
+
+<%= link_to "投稿", :new_admin_post_blog %>
+
+<ul class="menu">
+  <% @blogs.each do |b| %>
+    <li><%= b.title  %></li>
+  <% end %>
+</ul>
