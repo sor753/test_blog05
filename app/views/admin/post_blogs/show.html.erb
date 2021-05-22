@@ -4,6 +4,9 @@
   <h1><%= @title %></h1>
 
   <div>
+    <% if @blog.thumb.attached? %>
+      <%= image_tag @blog.thumb.variant(resize: '320x320').processed %>
+    <% end %>
     <p><%= @blog.author %></p>
     <p><%= @blog.content %></p>
     <p><%= @blog.image %></p>
