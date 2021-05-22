@@ -1,0 +1,8 @@
+<% @title = "ブログページ" %>
+<h1><%= @title %></h1>
+
+<ul class="menu">
+  <% @blogs.each do |b| %>
+    <li><%= link_to b.title, blog_path(b) %></li>
+  <% end %>
+</ul>
