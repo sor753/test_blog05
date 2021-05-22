@@ -1,0 +1,14 @@
+<% @title = "ブログ管理ページ" %>
+<h1><%= @title %></h1>
+
+<%= link_to "投稿", :new_admin_post_blog %>
+
+<ul class="menu">
+  <% @blogs.each do |b| %>
+    <li><%= b.title  %>
+      [<%= link_to "閲覧", admin_post_blog_path(b) %>]
+      [<%= link_to "編集", edit_admin_post_blog_path(b) %>]
+      [<%= link_to "削除", admin_post_blog_path(b), method: :delete %>]
+    </li>
+  <% end %>
+</ul>
