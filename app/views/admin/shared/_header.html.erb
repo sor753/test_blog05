@@ -1,8 +1,12 @@
 <header>
   <%= link_to "Blogs", root_path, class: "logo-marks" %>
- <%= link_to "ブログ管理", admin_post_blogs_path %>
- <%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
- <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
+  <%=
+    if current_admin
+      link_to "ブログ管理", admin_post_blogs_path
+    end
+  %>
+  <%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
+  <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
   <%=
       if current_admin
         link_to "ログアウト", :admin_session, method: :delete
