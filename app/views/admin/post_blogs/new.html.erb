@@ -13,8 +13,11 @@
       <%= f.text_field :author %>
     </div>
     <div>
-      <%= f.label :image, "サムネイル" %>
+      <%= f.label :image, "イメージ" %>
       <%= f.text_field :image %>
+    </div>
+    <div>
+      <%= f.file_field :thumb %>
     </div>
     <div>
       <%= f.rich_text_area :content %>
