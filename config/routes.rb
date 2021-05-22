@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
     resources :post_blogs
   end
+
+  root "blog#index"
+  resources :blog, only: %i[show]
 end
+
