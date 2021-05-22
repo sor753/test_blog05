@@ -20,6 +20,32 @@ class Admin::PostBlogsController < Admin::Base
     end
   end
 
+  def show
+    @blog = Blog.find(params[:id])
+  end
+
+  def edit
+    @blog = Blog.find(params[:id])
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+    @blog.assign_attributes(blog_params)
+    if @blog.save
+      flash.notice = "更新しました。"
+      redirect_to :admin_post_blogs
+    else
+      render action: "edit"
+    end
+  end
+
+  def destroy
+    blog = Blog.find(params[:id])
+    blog.destroy!
+    flash.notice = "「#{blog.title}」を削除しました。"
+    redirect_to :admin_post_blogs
+  end
+
   private
 
   def blog_params

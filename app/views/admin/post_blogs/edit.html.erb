@@ -1,0 +1,24 @@
+<% @title = "編集" %>
+<% blog = @blog %>
+
+<div id="post-form">
+  <h1><%= @title %></h1>
+
+  <%= form_with model: @blog, url: :admin_post_blog do |f| %>
+    <div>
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <%= f.label :author, "著者" %>
+      <%= f.text_field :author %>
+    </div>
+    <div>
+      <%= f.label :image, "サムネイル" %>
+      <%= f.text_field :image %>
+    </div>
+    <div>
+      <%= f.submit "投稿" %>
+    </div>
+  <% end %>
+</div>
