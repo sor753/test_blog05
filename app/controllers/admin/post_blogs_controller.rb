@@ -49,7 +49,7 @@ class Admin::PostBlogsController < Admin::Base
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :author, :image)
+    params.require(:blog).permit(:title, :author, :image, :content)
   end
   def current_admin_check
     unless current_admin
