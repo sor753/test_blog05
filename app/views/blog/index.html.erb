@@ -1,8 +1,21 @@
-<% @title = "ブログページ" %>
-<h1><%= @title %></h1>
+<%
+  if request.fullpath.include? "?page"
+    @url = request.fullpath.gsub(/[^\d]/, "").to_i
+  end
+%>
+<%
+  if @url.present?
+    @title = "ブログページ　アーカイブ　#{@url}ページ"
+  else
+    @title = "ブログページ"
+  end
+%>
+
+<h1>ブログページ</h1>
 
 <ul class="menu">
   <% @blogs.each do |b| %>
     <li><%= link_to b.title, blog_path(b) %></li>
   <% end %>
+  <%= paginate @blogs %>
 </ul>
