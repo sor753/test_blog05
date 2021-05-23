@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   root "blog#index"
   resources :blog, only: %i[show]
+  get "category" => "blog#category"
 end
 

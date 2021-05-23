@@ -1,11 +1,16 @@
 <%
-  if request.fullpath.include? "?page"
-    @url = request.fullpath.gsub(/[^\d]/, "").to_i
+  if request.fullpath.include? "page"
+    @url = request.fullpath.split("page=")[1]
+    # @url = request.fullpath.gsub(/[^\d]/, "").to_i
   end
 %>
 <%
   if @url.present?
-    @title = "ブログページ　アーカイブ　#{@url}ページ"
+    if @keyword.present?
+      @title = "ブログページ　#{@keyword}　アーカイブ　#{@url}ページ"
+    else
+      @title = "ブログページ　アーカイブ　#{@url}ページ"
+    end
   else
     @title = "ブログページ"
   end
@@ -18,4 +23,12 @@
     <li><%= link_to b.title, blog_path(b) %></li>
   <% end %>
   <%= paginate @blogs %>
+</ul>
+
+<ul class="category-menu">
+  <%= link_to "オール", category_path(keyword: "") %>
+  <%= link_to "グルメ", category_path(keyword: "グルメ") %>
+  <%= link_to "レジャー", category_path(keyword: "レジャー") %>
+  <%= link_to "ファッション", category_path(keyword: "ファッション") %>
+  <%= link_to "コラム", category_path(keyword: "コラム") %>
 </ul>

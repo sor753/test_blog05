@@ -7,4 +7,11 @@ class BlogController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
   end
+
+  def category
+    @blogs = Blog.category(params[:keyword])
+    @blogs = @blogs.page(params[:page])
+    @keyword = params[:keyword]
+    render "index"
+  end
 end

@@ -13,8 +13,8 @@
       <%= f.text_field :author %>
     </div>
     <div>
-      <%= f.label :image, "イメージ" %>
-      <%= f.text_field :image %>
+      <%= f.label :image, "カテゴリー-" %>
+      <%= f.select :image, [["グルメ", "グルメ"],["レジャー", "レジャー"],["ファッション", "ファッション"],["コラム", "コラム"]], include_blank: "カテゴリー" %>
     </div>
     <div>
       <%= f.file_field :thumb %>
