@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_033510) do
+ActiveRecord::Schema.define(version: 2021_05_23_115725) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +65,23 @@ ActiveRecord::Schema.define(version: 2021_05_22_033510) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "mark_maps", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "blog_id", null: false
+    t.bigint "mark_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blog_id"], name: "index_mark_maps_on_blog_id"
+    t.index ["mark_id"], name: "index_mark_maps_on_mark_id"
+  end
+
+  create_table "marks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "mark_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "mark_maps", "blogs"
+  add_foreign_key "mark_maps", "marks"
 end

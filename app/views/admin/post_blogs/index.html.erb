@@ -12,3 +12,9 @@
     </li>
   <% end %>
 </ul>
+
+<% @mark_list.each do |list| %>
+  <span>
+    <%= link_to list.mark_name, admin_tags_path(mark_id: list.id) %>
+  </span>
+<% end %>

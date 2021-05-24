@@ -10,5 +10,10 @@
     <p><%= @blog.author %></p>
     <p><%= @blog.content %></p>
     <p><%= @blog.image %></p>
+    <% @blog_marks.each do |mark| %>
+      <span>
+        <%= link_to mark.mark_name, tags_path(mark_id: mark.id) %>
+      </span>
+    <% end %>
   </div>
 </div>
