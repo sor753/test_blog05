@@ -32,12 +32,19 @@
 <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
 
 <% if @mark.present? %>
- <%= @mark.mark_name %>
+  <%= @mark.mark_name %>
 <% end %>
 
 <ul class="menu">
   <% @blogs.each do |b| %>
-    <li><%= link_to b.title, blog_path(b) %></li>
+    <li>
+      <%= link_to blog_path(b) do %>
+        <% if b.thumb.attached? %>
+          <%= image_tag b.thumb.variant(resize: "150x150").processed %>
+        <% end %>
+        <span><%= b.title %></span>
+      <% end %>
+    </li>
   <% end %>
   <%= paginate @blogs %>
 </ul>
