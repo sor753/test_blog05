@@ -4,19 +4,11 @@
   end
 %>
 <%
-  if @keyword.present? || @mark.present?
-    if @keyword.present?
-      if @current_page.present?
-        @title = "ブログページ　カテゴリ：#{@keyword}　#{@current_page}ページ"
-      else
-        @title = "ブログページ　カテゴリ：#{@keyword}"
-      end
-    elsif @mark.present?
-      if @current_page.present?
-        @title = "ブログページ　タグ：#{@mark.mark_name}　#{@current_page}ページ"
-      else
-        @title = "ブログページ　タグ：#{@mark.mark_name}"
-      end
+  if @mark.present?
+    if @current_page.present?
+      @title = "ブログページ　タグ：#{@mark.mark_name}　#{@current_page}ページ"
+    else
+      @title = "ブログページ　タグ：#{@mark.mark_name}"
     end
   else
     if @current_page.present?
@@ -28,8 +20,6 @@
 %>
 
 <h1>ブログページ</h1>
-<%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
-<%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
 
 <% if @mark.present? %>
  <%= @mark.mark_name %>
